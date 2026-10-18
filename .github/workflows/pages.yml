@@ -27,9 +27,9 @@ jobs:
       - name: Activate pinned pnpm
         run: corepack prepare pnpm@10.18.3 --activate
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: corepack pnpm install --frozen-lockfile
       - name: Build documentation
-        run: pnpm build
+        run: corepack pnpm build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
