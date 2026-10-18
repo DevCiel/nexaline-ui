@@ -9,6 +9,7 @@ const outputs = {
   tokens: resolve(root, 'packages/core/src/tokens/tokens.css'),
   utilities: resolve(root, 'packages/core/src/utilities/utilities.css'),
 };
+const normalizeLineEndings = (content) => content.replace(/\r\n/g, '\n');
 const declarations = (tokens) => Object.entries(tokens).map(([name,value]) => `--nx-${name}:${value}`).join(';');
 const rule = (name, body, prefix = '') => `.${prefix ? `${prefix}\\:` : ''}nx-${name}{${body}}`;
 
@@ -31,7 +32,10 @@ export async function generateCss({ check = false } = {}) {
   const expected = [[outputs.tokens, renderTokens()], [outputs.utilities, renderUtilities()]];
   if (check) {
     const stale = [];
-    for (const [path, content] of expected) if (await readFile(path, 'utf8') !== content) stale.push(path);
+    for (const [path, content] of expected) {
+      const current = normalizeLineEndings(await readFile(path, 'utf8'));
+      if (current !== normalizeLineEndings(content)) stale.push(path);
+    }
     if (stale.length) throw new Error(`Generated CSS is stale:\n${stale.map((path) => `- ${path}`).join('\n')}\nRun: corepack pnpm generate:css`);
     return;
   }
