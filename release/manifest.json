@@ -7,8 +7,8 @@
       "package": "nexaline-ui",
       "version": "0.1.0-beta.0",
       "filename": "nexaline-ui-0.1.0-beta.0.tgz",
-      "bytes": 73124,
-      "sha256": "722310d6ee418882f9c3709af4370ef90330ab9fe566ff7b0ce0c22f78033ff8"
+      "bytes": 73069,
+      "sha256": "ed1370f15b3952f2e21eb06f7c31512e84358177cc4b51bf60684e8533e4ec38"
     },
     {
       "package": "@nexaline-ui/core",
@@ -21,8 +21,8 @@
       "package": "@nexaline-ui/components",
       "version": "0.1.0-beta.0",
       "filename": "nexaline-ui-components-0.1.0-beta.0.tgz",
-      "bytes": 7752,
-      "sha256": "2f7aa7cec2d3b16314f8e0203a2b7cb89cbb36f6ec167c08b644fd8d735d8415"
+      "bytes": 7734,
+      "sha256": "51951e270b59a88894d3df873e3e0e4fdd44a086725ce66bfb090cd6dced30de"
     },
     {
       "package": "@nexaline-ui/js",
