@@ -1,0 +1,6 @@
+@layer nx-reset, nx-base, nx-layout, nx-components, nx-utilities;
+@import "../core/src/tokens/tokens.css";
+@import "../core/src/foundation/base.css";
+@import "../core/src/layout/layout.css";
+@import "../components/src/components.css";
+@import "../core/src/utilities/utilities.css";

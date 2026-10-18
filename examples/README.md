@@ -1,0 +1,3 @@
+# Framework integration examples
+
+HTML and PHP load built assets directly and are served through PHP during Playwright tests. The conventional CodeIgniter and Laravel snippets remain concise copyable references; bootable CodeIgniter 4.7 and Laravel 12 fixtures live under `tests/fixtures`. All four integrations are tested in Chromium, Firefox, and WebKit for successful responses, compiled CSS/JS loading, serious/critical axe findings, and browser console errors. The framework fixtures additionally submit real CSRF-protected forms and verify server-rendered validation without a database. After dynamically injecting Nexaline markup, call `NexalineUI.init(fragment)` and later call the returned `destroy()`.

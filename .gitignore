@@ -1,0 +1,8 @@
+node_modules/
+dist/
+apps/docs/dist/
+playwright-report/
+test-results/
+*.tgz
+.types/
+.preview*.log

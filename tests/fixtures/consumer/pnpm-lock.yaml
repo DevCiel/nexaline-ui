@@ -1,0 +1,68 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@nexaline-ui/components':
+        specifier: file:../../../release/nexaline-ui-components-0.1.0-beta.0.tgz
+        version: file:../../../release/nexaline-ui-components-0.1.0-beta.0.tgz(@nexaline-ui/core@file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz)
+      '@nexaline-ui/core':
+        specifier: file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz
+        version: file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz
+      '@nexaline-ui/icons-lucide':
+        specifier: file:../../../release/nexaline-ui-icons-lucide-0.1.0-beta.0.tgz
+        version: file:../../../release/nexaline-ui-icons-lucide-0.1.0-beta.0.tgz
+      '@nexaline-ui/js':
+        specifier: file:../../../release/nexaline-ui-js-0.1.0-beta.0.tgz
+        version: file:../../../release/nexaline-ui-js-0.1.0-beta.0.tgz
+      nexaline-ui:
+        specifier: file:../../../release/nexaline-ui-0.1.0-beta.0.tgz
+        version: file:../../../release/nexaline-ui-0.1.0-beta.0.tgz
+
+packages:
+
+  '@nexaline-ui/components@file:../../../release/nexaline-ui-components-0.1.0-beta.0.tgz':
+    resolution: {integrity: sha512-h0jJ99GYmemZBGckIvgE0LrQlf3A02vI8MCMK4YCFbtXLvELhTgO1MqTkGlrvdQCcorWlzsvMTlTdv3bSTWKGg==, tarball: file:../../../release/nexaline-ui-components-0.1.0-beta.0.tgz}
+    version: 0.1.0-beta.0
+    peerDependencies:
+      '@nexaline-ui/core': 0.1.0-beta.0
+
+  '@nexaline-ui/core@file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz':
+    resolution: {integrity: sha512-itLePKaP6iK69AVcBwgt7FE0NHNLPNuqc4XmMrV8umfH+noVx7z3wX6R6d694I7HQDscgmOYYhtWj5WP4K+4BA==, tarball: file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz}
+    version: 0.1.0-beta.0
+
+  '@nexaline-ui/icons-lucide@file:../../../release/nexaline-ui-icons-lucide-0.1.0-beta.0.tgz':
+    resolution: {integrity: sha512-FLVwPzlbWd15uuF6jiu46ADwWxP9a25KqDSx0tpeftoYd0/AycLx6ADIlYTa467AlP1TMaBqAOzAHmwIsELJSA==, tarball: file:../../../release/nexaline-ui-icons-lucide-0.1.0-beta.0.tgz}
+    version: 0.1.0-beta.0
+    peerDependencies:
+      '@lucide/icons': '>=1.0.0'
+    peerDependenciesMeta:
+      '@lucide/icons':
+        optional: true
+
+  '@nexaline-ui/js@file:../../../release/nexaline-ui-js-0.1.0-beta.0.tgz':
+    resolution: {integrity: sha512-gGGzLHCQxiVqc4J14dkW0LO5DgZgWiXN3ORoyHFNA9RXZ5y3io+PDf77mRmeulNgeam4LWQUK9EQoizudLFw+Q==, tarball: file:../../../release/nexaline-ui-js-0.1.0-beta.0.tgz}
+    version: 0.1.0-beta.0
+
+  nexaline-ui@file:../../../release/nexaline-ui-0.1.0-beta.0.tgz:
+    resolution: {integrity: sha512-k19HqyXQnYu7YZKQR1IqZXiSoRWcZMpvk8vyKaaStHSDuKB96O6t/TEs5aJKQJusjPEYOlWJkBPFWQ2JZNxbAQ==, tarball: file:../../../release/nexaline-ui-0.1.0-beta.0.tgz}
+    version: 0.1.0-beta.0
+
+snapshots:
+
+  '@nexaline-ui/components@file:../../../release/nexaline-ui-components-0.1.0-beta.0.tgz(@nexaline-ui/core@file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz)':
+    dependencies:
+      '@nexaline-ui/core': file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz
+
+  '@nexaline-ui/core@file:../../../release/nexaline-ui-core-0.1.0-beta.0.tgz': {}
+
+  '@nexaline-ui/icons-lucide@file:../../../release/nexaline-ui-icons-lucide-0.1.0-beta.0.tgz': {}
+
+  '@nexaline-ui/js@file:../../../release/nexaline-ui-js-0.1.0-beta.0.tgz': {}
+
+  nexaline-ui@file:../../../release/nexaline-ui-0.1.0-beta.0.tgz: {}

@@ -1,0 +1,45 @@
+{
+  "name": "nexaline-ui-workspace",
+  "version": "0.1.0-beta.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --config apps/docs/vite.config.ts",
+    "generate:css": "node scripts/generate-css.mjs",
+    "check:generated": "node scripts/generate-css.mjs --check",
+    "build": "node scripts/build.mjs && vite build --config apps/docs/vite.config.ts",
+    "build:packages": "node scripts/build.mjs",
+    "build:docs": "vite build --config apps/docs/vite.config.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "test:accessibility": "playwright test --config playwright.accessibility.config.ts",
+    "test:examples": "playwright test --config playwright.examples.config.ts",
+    "test:frameworks": "node scripts/prepare-framework-fixtures.mjs && playwright test --config playwright.frameworks.config.ts",
+    "test:visual": "playwright test tests/browser/visual.spec.ts",
+    "test:visual:update": "playwright test tests/browser/visual.spec.ts --update-snapshots",
+    "verify:packages": "node scripts/verify-package.mjs",
+    "verify:consumer": "node scripts/verify-consumer.mjs",
+    "pack:local": "corepack pnpm --filter nexaline-ui pack --pack-destination release && corepack pnpm --filter @nexaline-ui/core pack --pack-destination release && corepack pnpm --filter @nexaline-ui/components pack --pack-destination release && corepack pnpm --filter @nexaline-ui/js pack --pack-destination release && corepack pnpm --filter @nexaline-ui/icons-lucide pack --pack-destination release",
+    "release:manifest": "node scripts/release-manifest.mjs",
+    "verify:release": "node scripts/release-manifest.mjs --check",
+    "size": "node scripts/size.mjs",
+    "check": "corepack pnpm check:generated && corepack pnpm lint && corepack pnpm test && corepack pnpm build && corepack pnpm test:browser && corepack pnpm test:accessibility && corepack pnpm test:examples && corepack pnpm test:frameworks && corepack pnpm verify:packages && corepack pnpm pack:local && corepack pnpm release:manifest && corepack pnpm verify:release && corepack pnpm verify:consumer && corepack pnpm size"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@lucide/icons": "1.59.0",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0",
+    "esbuild": "^0.25.11",
+    "jsdom": "^27.0.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vitest": "^4.0.3"
+  }
+}

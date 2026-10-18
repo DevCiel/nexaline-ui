@@ -1,0 +1,13 @@
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+const api=await import('nexaline-ui');
+if(api.version!=='0.1.0-beta.0'||typeof api.Dialog!=='function'||typeof api.init!=='function')throw new Error('ES module exports failed');
+const cssUrl=import.meta.resolve('nexaline-ui/css');
+const css=await readFile(fileURLToPath(cssUrl),'utf8');
+if(!css.includes('--nx-color-primary')||!css.includes('.nx-btn')||!css.includes('.nx-tabs__tab'))throw new Error('CSS export failed');
+for(const name of ['core.css','components.css','utilities.css','no-reset.css'])await readFile(fileURLToPath(import.meta.resolve(`nexaline-ui/${name}`)));
+const focused=await import('@nexaline-ui/js/dialog');if(typeof focused.Dialog!=='function')throw new Error('Focused JavaScript package import failed');
+const icons=await import('@nexaline-ui/icons-lucide');if(typeof icons.createLucideIcon!=='function')throw new Error('Optional Lucide adapter import failed');
+const modularCore=await readFile(fileURLToPath(import.meta.resolve('@nexaline-ui/core')),'utf8');const modularUtilities=await readFile(fileURLToPath(import.meta.resolve('@nexaline-ui/core/utilities.css')),'utf8');const modularComponents=await readFile(fileURLToPath(import.meta.resolve('@nexaline-ui/components')),'utf8');
+if(modularCore.includes('.nx-p-4')||!modularUtilities.includes('.nx-p-4')||!modularComponents.includes('.nx-btn'))throw new Error('Modular workspace package boundary failed');
+console.log('Packed consumer imported aggregate and modular ESM/CSS package exports.');

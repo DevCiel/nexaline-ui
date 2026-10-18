@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "sha256",
+  "version": "0.1.0-beta.0",
+  "artifacts": [
+    {
+      "package": "nexaline-ui",
+      "version": "0.1.0-beta.0",
+      "filename": "nexaline-ui-0.1.0-beta.0.tgz",
+      "bytes": 73124,
+      "sha256": "722310d6ee418882f9c3709af4370ef90330ab9fe566ff7b0ce0c22f78033ff8"
+    },
+    {
+      "package": "@nexaline-ui/core",
+      "version": "0.1.0-beta.0",
+      "filename": "nexaline-ui-core-0.1.0-beta.0.tgz",
+      "bytes": 5540,
+      "sha256": "984daf395ec1b11604eceeb3fbc69c11139eb8a777807a1faf422fedb5e6c98c"
+    },
+    {
+      "package": "@nexaline-ui/components",
+      "version": "0.1.0-beta.0",
+      "filename": "nexaline-ui-components-0.1.0-beta.0.tgz",
+      "bytes": 7752,
+      "sha256": "2f7aa7cec2d3b16314f8e0203a2b7cb89cbb36f6ec167c08b644fd8d735d8415"
+    },
+    {
+      "package": "@nexaline-ui/js",
+      "version": "0.1.0-beta.0",
+      "filename": "nexaline-ui-js-0.1.0-beta.0.tgz",
+      "bytes": 13523,
+      "sha256": "e120dd75e87b610059515aea451334d01b90b54b8553526adb3bcc7a6d7f75e8"
+    },
+    {
+      "package": "@nexaline-ui/icons-lucide",
+      "version": "0.1.0-beta.0",
+      "filename": "nexaline-ui-icons-lucide-0.1.0-beta.0.tgz",
+      "bytes": 3477,
+      "sha256": "5d59fc411c6e0b7cc0833dfb17d26c36391b3463e089e7a1e4b4bd9b485565ca"
+    }
+  ]
+}

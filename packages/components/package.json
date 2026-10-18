@@ -1,0 +1,1 @@
+{"name":"@nexaline-ui/components","version":"0.1.0-beta.0","description":"Nexaline UI component styles","license":"MIT","type":"module","files":["dist","LICENSE","README.md"],"style":"dist/components.css","sideEffects":["**/*.css"],"peerDependencies":{"@nexaline-ui/core":"workspace:*"},"exports":{".":"./dist/components.css"}}

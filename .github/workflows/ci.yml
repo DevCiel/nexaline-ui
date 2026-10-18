@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  release-gate:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Activate pinned pnpm
+        run: corepack prepare pnpm@10.18.3 --activate
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+      - name: Install browsers
+        run: corepack pnpm exec playwright install chromium firefox webkit
+      - name: Install framework fixtures
+        run: |
+          composer install --working-dir=tests/fixtures/codeigniter-app --no-interaction --prefer-dist
+          composer install --working-dir=tests/fixtures/laravel-app --no-interaction --prefer-dist
+      - name: Run release gate
+        run: corepack pnpm check

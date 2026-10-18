@@ -1,0 +1,13 @@
+import { access, readFile } from 'node:fs/promises'; import { resolve } from 'node:path';
+const root=resolve(import.meta.dirname,'..'); const dist=resolve(root,'packages/nexaline-ui/dist');
+const required=['nexaline.css','nexaline.css.map','nexaline.min.css','nexaline.min.css.map','nexaline-core.css','nexaline-core.css.map','nexaline-components.css','nexaline-components.css.map','nexaline-utilities.css','nexaline-utilities.css.map','nexaline-no-reset.css','nexaline-no-reset.css.map','nexaline.es.js','nexaline.js','nexaline.cjs','index.d.ts'];
+await Promise.all(required.map(file=>access(resolve(dist,file))));
+const css=await readFile(resolve(dist,'nexaline.css'),'utf8'); const js=await readFile(resolve(dist,'nexaline.es.js'),'utf8');
+if(!css.includes('.nx-btn')||!css.includes('--nx-color-primary')||!js.includes('beforeopen'))throw new Error('Distribution smoke check failed');
+const core=await readFile(resolve(dist,'nexaline-core.css'),'utf8');const utilities=await readFile(resolve(dist,'nexaline-utilities.css'),'utf8');const noReset=await readFile(resolve(dist,'nexaline-no-reset.css'),'utf8');
+if(core.includes('.nx-p-4')||!utilities.includes('.nx-p-4'))throw new Error('Core and utility modular boundaries failed');
+if(noReset.includes('box-sizing:border-box')||!noReset.includes('.nx-btn')||!noReset.includes('.nx-p-4'))throw new Error('No-reset composition failed');
+console.log(`Verified ${required.length} package artifacts and public API markers.`);
+for(const module of ['dialog','drawer','disclosure','tabs','dropdown','toast','theme'])await access(resolve(root,'packages/javascript/dist',`${module}.js`));
+for(const file of ['index.js','index.js.map','index.d.ts'])await access(resolve(root,'packages/icons-lucide/dist',file));
+console.log('Verified tree-shakeable JavaScript entry points.');

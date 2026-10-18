@@ -1,0 +1,1 @@
+{"name":"@nexaline-ui/core","version":"0.1.0-beta.0","description":"Nexaline UI tokens, foundation, layout, and bounded utilities","license":"MIT","type":"module","files":["dist","LICENSE","README.md"],"style":"dist/core.css","sideEffects":["**/*.css"],"exports":{".":"./dist/core.css","./utilities.css":"./dist/utilities.css"}}

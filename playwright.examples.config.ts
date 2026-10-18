@@ -1,0 +1,2 @@
+import { defineConfig, devices } from '@playwright/test';
+export default defineConfig({testDir:'tests/examples',webServer:{command:'php -S 127.0.0.1:4174 -t .',url:'http://127.0.0.1:4174/examples/html/index.html',reuseExistingServer:true},use:{baseURL:'http://127.0.0.1:4174',trace:'retain-on-failure'},projects:[{name:'chromium',use:{...devices['Desktop Chrome'],viewport:{width:1024,height:800}}},{name:'firefox',use:{...devices['Desktop Firefox'],viewport:{width:1024,height:800}}},{name:'webkit',use:{...devices['Desktop Safari'],viewport:{width:1024,height:800}}}]});
