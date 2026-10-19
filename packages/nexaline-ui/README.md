@@ -1,18 +1,42 @@
 # Nexaline UI
 
-An experimental, dependency-light CSS and TypeScript framework for server-rendered and static HTML. It combines accessible components with a bounded utility system; it has no Bootstrap, Tailwind, jQuery, React, or Vue dependency.
+[![CI](https://github.com/DevCiel/nexaline-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/DevCiel/nexaline-ui/actions/workflows/ci.yml)
+[![npm beta](https://img.shields.io/npm/v/nexaline-ui/beta)](https://www.npmjs.com/package/nexaline-ui)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Quick start
+An experimental, dependency-light CSS and TypeScript framework for server-rendered and static HTML. It combines accessible components with a bounded utility system and has no Bootstrap, Tailwind, jQuery, React, or Vue dependency.
 
-```html
-<link rel="stylesheet" href="dist/nexaline.css">
-<script src="dist/nexaline.js" defer></script>
+## Install
+
+```bash
+npm install nexaline-ui@beta
 ```
 
-Run `corepack pnpm install`, then `pnpm check`. Use `pnpm dev` for the documentation and customer-management demo.
+```js
+import 'nexaline-ui/css';
+import { init } from 'nexaline-ui';
 
-Token and bounded-utility CSS is generated from `config/tokens.mjs` and `config/utilities.mjs`. Run `corepack pnpm generate:css` after changing definitions and `corepack pnpm check:generated` to detect drift. Do not edit the generated token or utility CSS files directly.
+init(document);
+```
 
-The public API is experimental until 1.0. See `docs/architecture.md` and integration examples under `examples/`.
+Modular packages are also available:
 
-Package names currently do not resolve in read-only npm checks, but remain provisional and unreserved. Nothing is published by the build or release scripts.
+```bash
+npm install @nexaline-ui/core@beta @nexaline-ui/components@beta @nexaline-ui/js@beta
+```
+
+## Documentation
+
+- [Live documentation](https://devciel.github.io/nexaline-ui/)
+- [Component catalogue](https://devciel.github.io/nexaline-ui/components.html)
+- [Guides](https://devciel.github.io/nexaline-ui/guides.html)
+- [Accessibility evidence](https://devciel.github.io/nexaline-ui/accessibility.html)
+- [v0.1.0-beta.0 release](https://github.com/DevCiel/nexaline-ui/releases/tag/v0.1.0-beta.0)
+
+## Development
+
+Run `corepack pnpm install`, then `corepack pnpm check`. Use `corepack pnpm dev` for the local documentation and demo.
+
+Token and bounded-utility CSS is generated from `config/tokens.mjs` and `config/utilities.mjs`. Run `corepack pnpm generate:css` after changing definitions and `corepack pnpm check:generated` to detect drift. Do not edit generated token or utility CSS directly.
+
+The public API remains experimental until 1.0. See `docs/architecture.md` and the integration examples under `examples/`.
