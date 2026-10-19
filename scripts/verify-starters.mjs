@@ -24,7 +24,8 @@ for (const starter of starters) {
     const relativePath=required.replace('package/','');
     const source=await readFile(resolve(root,'starters',starter.directory,relativePath),'utf8');
     const {stdout:archived}=await exec('tar',['-xOf',archivePath,required],{windowsHide:true});
-    if(archived!==source)throw new Error(`${starter.archive} contains stale content for ${relativePath}. Run: corepack pnpm pack:starters`);
+    const normalizeLineEndings=(value)=>value.replace(/\r\n/g,'\n');
+    if(normalizeLineEndings(archived)!==normalizeLineEndings(source))throw new Error(`${starter.archive} contains stale content for ${relativePath}. Run: corepack pnpm pack:starters`);
   }
 }
 const noBuild=await readFile(resolve(root,'starters','no-build','index.html'),'utf8');
