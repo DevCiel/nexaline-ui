@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-nx-theme="light">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Search Nexaline UI guides and component contracts"><title>Search — Nexaline UI</title></head>
+<body>
+<header class="docs-header"><div class="nx-container nx-cluster nx-justify-between docs-header__inner"><a class="docs-brand" href="./index.html">Nexaline<span>UI</span></a><nav class="nx-cluster" aria-label="Documentation"><a href="./index.html">Overview</a><a href="./getting-started.html">Get started</a><a href="./components.html">Components</a><a href="./guides.html">Guides</a><a href="./search.html" aria-current="page">Search</a><button class="nx-btn nx-btn--secondary nx-btn--sm" type="button" data-theme-toggle>Dark theme</button></nav></div></header>
+<main class="nx-container docs-main nx-stack nx-gap-6">
+  <header class="docs-page-intro"><p class="docs-eyebrow">Documentation search</p><h1>Find guides and component contracts</h1><p class="nx-text-muted">Search installation paths, layout concepts, accessibility requirements, selectors, states, JavaScript methods, and token surfaces. Press <kbd>/</kbd> from any documentation page to start.</p></header>
+  <form class="docs-search-form" role="search" id="docs-search-form">
+    <div><label class="nx-label" for="docs-search">Search documentation</label><input class="nx-input" id="docs-search" name="q" type="search" autocomplete="off" placeholder="Try dialog focus, RTL, validation, or migration" aria-describedby="docs-search-help"></div>
+    <div><label class="nx-label" for="docs-search-type">Result type</label><select class="nx-select" id="docs-search-type" name="type"><option value="">All documentation</option><option value="guide">Guides</option><option value="component">Components</option></select></div>
+    <p class="nx-text-sm nx-text-muted docs-search-help" id="docs-search-help">Use Down Arrow to move into results. Press Escape to clear the search.</p>
+  </form>
+  <p id="docs-search-status" role="status" aria-live="polite"></p>
+  <div class="docs-search-results" id="docs-search-results"></div>
+</main>
+<script type="module" src="/src/main.ts"></script>
+</body></html>

@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Added searchable component-detail documentation with stable deep links and shareable filter URLs for all 38 audited contracts.
+- Added release-gate-verified no-build and Vite starter project downloads.
 
 ## 0.1.0-beta.1 — 2026-10-19
 

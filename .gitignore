@@ -4,5 +4,6 @@ apps/docs/dist/
 playwright-report/
 test-results/
 *.tgz
+!apps/docs/public/downloads/*.tgz
 .types/
 .preview*.log

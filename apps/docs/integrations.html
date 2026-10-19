@@ -1,0 +1,61 @@
+<!doctype html><html lang="en" dir="ltr" data-nx-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Integrate Nexaline UI with HTML, PHP, CodeIgniter, Laravel, bundlers, and optional icons"><title>Framework integrations — Nexaline UI</title></head><body>
+<header class="docs-header"><div class="nx-container nx-cluster nx-justify-between docs-header__inner"><a class="docs-brand" href="./index.html">Nexaline<span>UI</span></a><nav class="nx-cluster" aria-label="Documentation"><a href="./index.html">Overview</a><a href="./getting-started.html">Get started</a><a href="./javascript.html">JavaScript</a><a href="./forms.html">Forms</a><a href="./guides.html">Guides</a><button class="nx-btn nx-btn--secondary nx-btn--sm" type="button" data-theme-toggle>Dark theme</button></nav></div></header>
+<main class="nx-container docs-main"><div class="nx-grid"><aside class="nx-col-12 lg:nx-col-4"><nav class="nx-card nx-card__body" aria-label="Integration guide sections"><ul class="nx-list"><li class="nx-list__item"><a href="#choose">Choose a path</a></li><li class="nx-list__item"><a href="#bundler">Bundlers</a></li><li class="nx-list__item"><a href="#html">Plain HTML</a></li><li class="nx-list__item"><a href="#php">Plain PHP</a></li><li class="nx-list__item"><a href="#codeigniter">CodeIgniter</a></li><li class="nx-list__item"><a href="#laravel">Laravel</a></li><li class="nx-list__item"><a href="#dynamic">Dynamic markup</a></li><li class="nx-list__item"><a href="#icons">Optional icons</a></li><li class="nx-list__item"><a href="#evidence">Test evidence</a></li></ul></nav></aside>
+<div class="nx-col-12 lg:nx-col-8 nx-stack nx-gap-6"><header class="docs-page-intro"><p class="docs-eyebrow">Integrations</p><h1>Use the same contracts in every rendering stack</h1><p class="nx-text-muted">Nexaline has no framework runtime dependency. Render semantic HTML on the server or client, load one deliberate CSS entry, and initialize enhanced behavior only where needed.</p></header>
+<section id="choose" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Choose an asset path</h2></header><div class="nx-card__body"><div class="nx-table-wrap" tabindex="0" role="region" aria-label="Integration asset paths"><table class="nx-table"><thead><tr><th scope="col">Application</th><th scope="col">Recommended path</th><th scope="col">Runtime requirement</th></tr></thead><tbody><tr><th scope="row">Bundled JavaScript</th><td>Import <code>nexaline-ui/css</code> and ESM exports</td><td>Node only during development/build</td></tr><tr><th scope="row">Plain HTML or PHP</th><td>Self-host compiled CSS and browser JS</td><td>None</td></tr><tr><th scope="row">CodeIgniter or Laravel</th><td>Publish compiled assets to the public directory</td><td>PHP framework only</td></tr></tbody></table></div><p class="nx-mt-4">Do not combine the aggregate stylesheet with modular core/components styles in the same page; that duplicates rules.</p></div></section>
+<section id="bundler" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Bundlers and package exports</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>import 'nexaline-ui/css'
+import { init } from 'nexaline-ui'
+
+const lifecycle = init(document)
+
+// On application teardown:
+lifecycle.destroy()</code></pre><p>The aggregate package publishes ESM, CommonJS, browser, type, and CSS entries. Smaller applications can combine <code>@nexaline-ui/core</code>, <code>@nexaline-ui/components</code>, and <code>@nexaline-ui/js</code> deliberately.</p><div class="nx-alert nx-alert--info"><strong>CSS retention:</strong> package metadata marks stylesheet imports as side effects so production bundlers keep them.</div></div></section>
+<section id="html" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Plain HTML</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>&lt;link rel="stylesheet" href="/assets/nexaline.min.css"&gt;
+&lt;script src="/assets/nexaline.min.js" defer&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.addEventListener('DOMContentLoaded', () =&gt; {
+    window.nexalineLifecycle = NexalineUI.init(document)
+  })
+&lt;/script&gt;</code></pre><p>Use a relative or root-relative asset URL that matches the deployment base. The browser bundle exposes the global API but requires an explicit <code>init(document)</code> call.</p></div></section>
+<section id="php" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Plain PHP</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>&lt;label class="nx-label" for="email"&gt;Email&lt;/label&gt;
+&lt;input class="nx-input" id="email" name="email" type="email"
+  value="&lt;?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?&gt;"&gt;</code></pre><p>Nexaline does not change escaping, CSRF, validation, or authorization rules. Escape values for their output context and let the application own request processing.</p></div></section>
+<section id="codeigniter" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">CodeIgniter 4</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>&lt;?= form_open('/customers') ?&gt;
+  &lt;?= csrf_field() ?&gt;
+  &lt;label class="nx-label" for="ci-email"&gt;Email&lt;/label&gt;
+  &lt;input class="nx-input" id="ci-email" name="email" type="email"
+    aria-describedby="ci-email-error"
+    &lt;?= validation_show_error('email') ? 'aria-invalid="true"' : '' ?&gt;&gt;
+  &lt;?php if (validation_show_error('email')): ?&gt;
+    &lt;p class="nx-field__error" id="ci-email-error"&gt;
+      &lt;?= esc(validation_show_error('email')) ?&gt;
+    &lt;/p&gt;
+  &lt;?php endif ?&gt;
+  &lt;button class="nx-btn nx-btn--primary"&gt;Save customer&lt;/button&gt;
+&lt;?= form_close() ?&gt;</code></pre><p>Copy compiled assets into <code>public/assets</code>, enable the form and CSRF helpers, and render validation text only when it exists.</p></div></section>
+<section id="laravel" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Laravel Blade</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>&lt;form method="POST" action="/customers"&gt;
+  @csrf
+  &lt;label class="nx-label" for="laravel-email"&gt;Email&lt;/label&gt;
+  &lt;input class="nx-input" id="laravel-email" name="email" type="email"
+    value="{{ old('email') }}" aria-describedby="laravel-email-error"
+    @error('email') aria-invalid="true" @enderror&gt;
+  @error('email')
+    &lt;p class="nx-field__error" id="laravel-email-error"&gt;{{ $message }}&lt;/p&gt;
+  @enderror
+  &lt;button class="nx-btn nx-btn--primary"&gt;Save customer&lt;/button&gt;
+&lt;/form&gt;</code></pre><p>Use either Vite package imports or public compiled assets. Preserve old input intentionally and keep framework validation messages connected to their controls.</p></div></section>
+<section id="dynamic" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Initialize dynamically inserted markup</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>const root = document.querySelector('#partial-root')
+root.innerHTML = response.html
+const partial = NexalineUI.init(root)
+
+// Before replacing the partial again:
+partial.destroy()</code></pre><p>Server navigation that performs a full page load starts a new document. Partial-page systems must initialize the inserted stable root and destroy its lifecycle before replacement.</p></div></section>
+<section id="icons" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Optional Lucide adapter</h2></header><div class="nx-card__body nx-stack"><pre class="docs-code"><code>import { CircleCheckBig } from '@lucide/icons'
+import { createLucideIcon } from '@nexaline-ui/icons-lucide'
+
+status.prepend(createLucideIcon(CircleCheckBig, {
+  decorative: false,
+  label: 'Complete'
+}))</code></pre><p>Nexaline does not bundle an icon set. Decorative icons are hidden from assistive technology. Informative icons require a non-empty label, and an icon never names its parent button automatically.</p></div></section>
+<section id="evidence" class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Repository-backed integration evidence</h2></header><div class="nx-card__body nx-stack"><div class="nx-table-wrap" tabindex="0" role="region" aria-label="Tested integrations"><table class="nx-table"><thead><tr><th scope="col">Fixture</th><th scope="col">Verified behavior</th></tr></thead><tbody><tr><th scope="row">HTML</th><td>Compiled assets, browser API, accessibility, console</td></tr><tr><th scope="row">PHP</th><td>Server response, compiled assets, accessibility, console</td></tr><tr><th scope="row">CodeIgniter 4.7</th><td>Bootable app, CSRF, submitted validation, CSS/JS, accessibility</td></tr><tr><th scope="row">Laravel 12</th><td>Bootable app, CSRF, submitted validation, CSS/JS, accessibility</td></tr><tr><th scope="row">Packed consumer</th><td>Aggregate and modular ESM/CSS exports plus optional icon adapter</td></tr></tbody></table></div><p>These fixtures run in the release gate. They prove integration boundaries without requiring a database or authentication system.</p></div></section>
+</div></div></main><script type="module" src="/src/main.ts"></script></body></html>

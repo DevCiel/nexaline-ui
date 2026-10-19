@@ -62,6 +62,7 @@ export function renderComponentContracts(root: HTMLElement): void {
 }
 
 export const componentSlug = (item: ComponentContract): string => item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const escapeHtml = (value: string): string => value.replace(/[&<>'"]/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character] ?? character));
 
 export function renderComponentDetails(root: HTMLElement, contracts: ComponentContract[] = componentContracts): void {
   root.innerHTML = contracts.map((item) => `<article class="nx-card docs-contract-card" id="${componentSlug(item)}" data-component-detail data-component-group="${item.group}">
@@ -75,7 +76,31 @@ export function renderComponentDetails(root: HTMLElement, contracts: ComponentCo
         <div><dt>JavaScript</dt><dd><code>${item.javascript}</code></dd></div>
         <div><dt>Tokens</dt><dd>${item.tokens}</dd></div>
       </dl>
+      <p><a class="nx-btn nx-btn--sm" href="./component.html?component=${componentSlug(item)}">Open ${item.name} documentation</a></p>
       <p class="nx-text-muted">See the <a href="./components.html">live catalogue</a> and <a href="./reference.html">copyable reference</a> for rendered usage.</p>
     </div>
   </article>`).join('');
+}
+
+export function renderComponentPage(root: HTMLElement, slug: string): boolean {
+  const index = componentContracts.findIndex((item) => componentSlug(item) === slug);
+  if (index < 0) {
+    root.innerHTML = `<div class="nx-empty"><h1>Component not found</h1><p>No component matches <code>${escapeHtml(slug || 'empty')}</code>.</p><a class="nx-btn nx-btn--primary" href="./component-details.html">Browse all component details</a></div>`;
+    return false;
+  }
+  const item = componentContracts[index];
+  const previous = componentContracts[index - 1];
+  const next = componentContracts[index + 1];
+  document.title = `${item.name} — Nexaline UI`;
+  root.innerHTML = `<nav class="nx-breadcrumb" aria-label="Breadcrumb"><ol class="nx-breadcrumb"><li><a href="./index.html">Docs</a></li><li><a href="./component-details.html">Components</a></li><li aria-current="page">${item.name}</li></ol></nav>
+    <header class="docs-page-intro"><p class="docs-eyebrow">${item.group}</p><h1>${item.name}</h1><p class="nx-text-muted">Public contract for <code>${item.selector}</code>.</p></header>
+    <div class="nx-grid">
+      <article class="nx-col-12 lg:nx-col-8 nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Contract</h2></header><div class="nx-card__body"><dl class="docs-contract-fields">
+        <div><dt>Selector</dt><dd><code>${item.selector}</code></dd></div><div><dt>Variants</dt><dd>${item.variants}</dd></div><div><dt>States</dt><dd>${item.states}</dd></div><div><dt>Accessibility</dt><dd>${item.accessibility}</dd></div><div><dt>JavaScript</dt><dd><code>${item.javascript}</code></dd></div><div><dt>Tokens</dt><dd>${item.tokens}</dd></div>
+      </dl></div></article>
+      <aside class="nx-col-12 lg:nx-col-4 nx-card docs-component" aria-labelledby="component-responsibilities"><header class="nx-card__header"><h2 class="nx-mb-0" id="component-responsibilities">Author checklist</h2></header><div class="nx-card__body"><ul><li>Use the documented semantic element and selector.</li><li>Provide meaningful content and visible labels.</li><li>Test every listed state with keyboard and screen reader.</li><li>Override only the documented token surface.</li></ul></div></aside>
+    </div>
+    <section class="nx-card docs-component"><header class="nx-card__header"><h2 class="nx-mb-0">Related resources</h2></header><div class="nx-card__body nx-cluster"><a class="nx-btn" href="./components.html">Live catalogue</a><a class="nx-btn" href="./reference.html">Copyable reference</a><a class="nx-btn" href="./accessibility.html">Accessibility evidence</a><a class="nx-btn" href="./javascript.html">JavaScript lifecycle</a></div></section>
+    <nav class="nx-cluster nx-justify-between" aria-label="Component pages">${previous ? `<a href="./component.html?component=${componentSlug(previous)}">← ${previous.name}</a>` : '<span></span>'}${next ? `<a href="./component.html?component=${componentSlug(next)}">${next.name} →</a>` : '<span></span>'}</nav>`;
+  return true;
 }

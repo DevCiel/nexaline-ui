@@ -1,0 +1,1 @@
+{"name":"nexaline-ui-vite-starter","version":"0.1.0-beta.1","private":true,"type":"module","files":["index.html","src","README.md"],"scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"dependencies":{"nexaline-ui":"0.1.0-beta.1"},"devDependencies":{"vite":"^7.1.12"},"license":"MIT"}

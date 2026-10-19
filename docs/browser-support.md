@@ -1,6 +1,6 @@
 # Browser support policy
 
-Nexaline UI `0.1.0-beta.0` declares a production floor of Chrome 111+, Edge 111+, Firefox 114+, and Safari/iOS 16.4+. The shared source of truth is `config/browser-support.mjs`; package and documentation builds consume its explicit targets.
+Nexaline UI `0.1.0-beta.1` declares a production floor of Chrome 111+, Edge 111+, Firefox 114+, and Safari/iOS 16.4+. The shared source of truth is `config/browser-support.mjs`; package and documentation builds consume its explicit targets.
 
 ## What the floor means
 

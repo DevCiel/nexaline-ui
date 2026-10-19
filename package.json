@@ -25,11 +25,13 @@
     "test:visual:update": "playwright test tests/browser/visual.spec.ts --update-snapshots",
     "verify:packages": "node scripts/verify-package.mjs",
     "verify:consumer": "node scripts/verify-consumer.mjs",
+    "pack:starters": "corepack pnpm --dir starters/no-build pack --pack-destination ../../apps/docs/public/downloads && corepack pnpm --dir starters/vite pack --pack-destination ../../apps/docs/public/downloads",
+    "verify:starters": "node scripts/verify-starters.mjs",
     "pack:local": "corepack pnpm --filter nexaline-ui pack --pack-destination release && corepack pnpm --filter @nexaline-ui/core pack --pack-destination release && corepack pnpm --filter @nexaline-ui/components pack --pack-destination release && corepack pnpm --filter @nexaline-ui/js pack --pack-destination release && corepack pnpm --filter @nexaline-ui/icons-lucide pack --pack-destination release",
     "release:manifest": "node scripts/release-manifest.mjs",
     "verify:release": "node scripts/release-manifest.mjs --check",
     "size": "node scripts/size.mjs",
-    "check": "corepack pnpm check:generated && corepack pnpm lint && corepack pnpm test && corepack pnpm build && corepack pnpm test:browser && corepack pnpm test:accessibility && corepack pnpm test:examples && corepack pnpm test:frameworks && corepack pnpm verify:packages && corepack pnpm pack:local && corepack pnpm release:manifest && corepack pnpm verify:release && corepack pnpm verify:consumer && corepack pnpm size"
+    "check": "corepack pnpm check:generated && corepack pnpm lint && corepack pnpm test && corepack pnpm verify:starters && corepack pnpm build && corepack pnpm test:browser && corepack pnpm test:accessibility && corepack pnpm test:examples && corepack pnpm test:frameworks && corepack pnpm verify:packages && corepack pnpm pack:local && corepack pnpm release:manifest && corepack pnpm verify:release && corepack pnpm verify:consumer && corepack pnpm size"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
