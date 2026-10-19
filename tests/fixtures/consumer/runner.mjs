@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 const api=await import('nexaline-ui');
-if(api.version!=='0.1.0-beta.0'||typeof api.Dialog!=='function'||typeof api.init!=='function')throw new Error('ES module exports failed');
+if(api.version!=='0.1.0-beta.1'||typeof api.Dialog!=='function'||typeof api.init!=='function')throw new Error('ES module exports failed');
 const cssUrl=import.meta.resolve('nexaline-ui/css');
 const css=await readFile(fileURLToPath(cssUrl),'utf8');
 if(!css.includes('--nx-color-primary')||!css.includes('.nx-btn')||!css.includes('.nx-tabs__tab'))throw new Error('CSS export failed');

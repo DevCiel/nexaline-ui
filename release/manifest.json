@@ -1,42 +1,42 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0-beta.1",
   "artifacts": [
     {
       "package": "nexaline-ui",
-      "version": "0.1.0-beta.0",
-      "filename": "nexaline-ui-0.1.0-beta.0.tgz",
-      "bytes": 73069,
-      "sha256": "ed1370f15b3952f2e21eb06f7c31512e84358177cc4b51bf60684e8533e4ec38"
+      "version": "0.1.0-beta.1",
+      "filename": "nexaline-ui-0.1.0-beta.1.tgz",
+      "bytes": 73411,
+      "sha256": "4ee8a5c67e86573821344049003acfd158c371a4600a28dabd82c68f904344ec"
     },
     {
       "package": "@nexaline-ui/core",
-      "version": "0.1.0-beta.0",
-      "filename": "nexaline-ui-core-0.1.0-beta.0.tgz",
-      "bytes": 5540,
-      "sha256": "984daf395ec1b11604eceeb3fbc69c11139eb8a777807a1faf422fedb5e6c98c"
+      "version": "0.1.0-beta.1",
+      "filename": "nexaline-ui-core-0.1.0-beta.1.tgz",
+      "bytes": 5641,
+      "sha256": "a4fb41dcee0e4ea053f9449457396ef7b0f96b5626dce3ae7c6c29df3ae88088"
     },
     {
       "package": "@nexaline-ui/components",
-      "version": "0.1.0-beta.0",
-      "filename": "nexaline-ui-components-0.1.0-beta.0.tgz",
-      "bytes": 7734,
-      "sha256": "51951e270b59a88894d3df873e3e0e4fdd44a086725ce66bfb090cd6dced30de"
+      "version": "0.1.0-beta.1",
+      "filename": "nexaline-ui-components-0.1.0-beta.1.tgz",
+      "bytes": 7844,
+      "sha256": "8b86fa64bb36bb4be21f89e0948a462411d3d7dd8b296c348068d5b6632e29e3"
     },
     {
       "package": "@nexaline-ui/js",
-      "version": "0.1.0-beta.0",
-      "filename": "nexaline-ui-js-0.1.0-beta.0.tgz",
-      "bytes": 13523,
-      "sha256": "e120dd75e87b610059515aea451334d01b90b54b8553526adb3bcc7a6d7f75e8"
+      "version": "0.1.0-beta.1",
+      "filename": "nexaline-ui-js-0.1.0-beta.1.tgz",
+      "bytes": 13627,
+      "sha256": "57d41fc83e0b8f186eaf4d5e6ff4a791e4529fd12573809aa33dab2d93cb05db"
     },
     {
       "package": "@nexaline-ui/icons-lucide",
-      "version": "0.1.0-beta.0",
-      "filename": "nexaline-ui-icons-lucide-0.1.0-beta.0.tgz",
-      "bytes": 3477,
-      "sha256": "5d59fc411c6e0b7cc0833dfb17d26c36391b3463e089e7a1e4b4bd9b485565ca"
+      "version": "0.1.0-beta.1",
+      "filename": "nexaline-ui-icons-lucide-0.1.0-beta.1.tgz",
+      "bytes": 3579,
+      "sha256": "14bdecffbc3e89010006be8eac6d62a63082faee6f72e347da5c85045737dd04"
     }
   ]
 }

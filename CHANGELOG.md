@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-beta.1 — 2026-10-19
+
+- Added live documentation, repository, and issue metadata to every published package.
+- Replaced provisional installation guidance with verified npm `beta` installation and import examples.
+- Added GitHub Pages deployment and CI-only retries for transient browser-runner failures.
+- Preserved the beta.0 API surface; no migration is required.
+
 ## 0.1.0-beta.0 — 2026-10-18
 
 - Added experimental token, foundation, layout, utility, component, and JavaScript packages.

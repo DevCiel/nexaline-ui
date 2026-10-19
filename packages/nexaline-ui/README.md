@@ -31,7 +31,7 @@ npm install @nexaline-ui/core@beta @nexaline-ui/components@beta @nexaline-ui/js@
 - [Component catalogue](https://devciel.github.io/nexaline-ui/components.html)
 - [Guides](https://devciel.github.io/nexaline-ui/guides.html)
 - [Accessibility evidence](https://devciel.github.io/nexaline-ui/accessibility.html)
-- [v0.1.0-beta.0 release](https://github.com/DevCiel/nexaline-ui/releases/tag/v0.1.0-beta.0)
+- [GitHub releases](https://github.com/DevCiel/nexaline-ui/releases)
 
 ## Development
 

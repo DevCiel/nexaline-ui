@@ -38,7 +38,7 @@ export function init(root: ParentNode = document): NexalineInstance {
   return { destroy() { releases.splice(0).forEach(release=>release()); } };
 }
 
-export const version = '0.1.0-beta.0';
+export const version = '0.1.0-beta.1';
 
 declare global { interface Window { NexalineUI?: { Dialog: typeof Dialog; Drawer: typeof Drawer; Disclosure:typeof Disclosure; Tabs:typeof Tabs; Dropdown:typeof Dropdown; init: typeof init; version: string } } }
 if (typeof window !== 'undefined') window.NexalineUI = { Dialog, Drawer, Disclosure, Tabs, Dropdown, init, version };
