@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Added searchable component-detail documentation with stable deep links for all 38 audited contracts.
+
 ## 0.1.0-beta.1 — 2026-10-19
 
 - Added live documentation, repository, and issue metadata to every published package.

@@ -4,11 +4,37 @@ import '../../../packages/components/src/components.css';
 import { init, ThemePreference } from '../../../packages/javascript/src/index';
 import { Toast } from '../../../packages/javascript/src/toast';
 import './site.css';
-import { renderComponentContracts } from './contracts';
+import { componentContracts, renderComponentContracts, renderComponentDetails } from './contracts';
 
 init(document);
 const contractRoot = document.querySelector<HTMLElement>('#component-contracts');
 if (contractRoot) renderComponentContracts(contractRoot);
+const detailRoot = document.querySelector<HTMLElement>('#component-details');
+const detailSearch = document.querySelector<HTMLInputElement>('#component-detail-search');
+const detailGroup = document.querySelector<HTMLSelectElement>('#component-detail-group');
+const detailStatus = document.querySelector<HTMLElement>('#component-detail-status');
+if (detailRoot) {
+  const updateDetails = () => {
+    const terms = (detailSearch?.value.trim().toLowerCase() ?? '').split(/\s+/).filter(Boolean);
+    const group = detailGroup?.value ?? '';
+    const matches = componentContracts.filter((item) => {
+      const searchable = Object.values(item).join(' ').toLowerCase();
+      return (!group || item.group === group) && terms.every((term) => searchable.includes(term));
+    });
+    renderComponentDetails(detailRoot, matches);
+    if (detailStatus) detailStatus.textContent = `${matches.length} of ${componentContracts.length} components shown.`;
+  };
+  detailSearch?.addEventListener('input', updateDetails);
+  detailGroup?.addEventListener('change', updateDetails);
+  window.addEventListener('hashchange', () => {
+    if (!location.hash) return;
+    if (detailSearch) detailSearch.value = '';
+    if (detailGroup) detailGroup.value = '';
+    updateDetails();
+    requestAnimationFrame(() => document.querySelector<HTMLElement>(location.hash)?.scrollIntoView());
+  });
+  updateDetails();
+}
 document.querySelectorAll<HTMLElement>('.docs-code').forEach(block => block.setAttribute('tabindex','0'));
 document.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach(button=>button.addEventListener('click',async()=>{const target=document.querySelector<HTMLElement>(button.dataset.copyTarget??'');if(!target)return;try{await navigator.clipboard.writeText(target.textContent??'');button.textContent='Copied';window.setTimeout(()=>button.textContent='Copy',1600)}catch{button.textContent='Select and copy';target.focus()}}));
 document.querySelector<HTMLButtonElement>('[data-theme-toggle]')?.addEventListener('click', (event) => {

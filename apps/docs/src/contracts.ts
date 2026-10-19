@@ -60,3 +60,22 @@ export function renderComponentContracts(root: HTMLElement): void {
     <td>${item.states}</td><td>${item.accessibility}</td><td><code>${item.javascript}</code></td><td>${item.tokens}</td>
   </tr>`).join('');
 }
+
+export const componentSlug = (item: ComponentContract): string => item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+export function renderComponentDetails(root: HTMLElement, contracts: ComponentContract[] = componentContracts): void {
+  root.innerHTML = contracts.map((item) => `<article class="nx-card docs-contract-card" id="${componentSlug(item)}" data-component-detail data-component-group="${item.group}">
+    <header class="nx-card__header"><p class="docs-eyebrow">${item.group}</p><h2 class="nx-mb-0"><a href="#${componentSlug(item)}">${item.name}</a></h2></header>
+    <div class="nx-card__body nx-stack">
+      <dl class="docs-contract-fields">
+        <div><dt>Selector</dt><dd><code>${item.selector}</code></dd></div>
+        <div><dt>Variants</dt><dd>${item.variants}</dd></div>
+        <div><dt>States</dt><dd>${item.states}</dd></div>
+        <div><dt>Accessibility</dt><dd>${item.accessibility}</dd></div>
+        <div><dt>JavaScript</dt><dd><code>${item.javascript}</code></dd></div>
+        <div><dt>Tokens</dt><dd>${item.tokens}</dd></div>
+      </dl>
+      <p class="nx-text-muted">See the <a href="./components.html">live catalogue</a> and <a href="./reference.html">copyable reference</a> for rendered usage.</p>
+    </div>
+  </article>`).join('');
+}

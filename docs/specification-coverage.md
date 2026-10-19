@@ -30,7 +30,7 @@ Audit date: 19 October 2026. Scope: the attached Nexaline UI implementation brie
 | 17. Icons | Complete | Core is icon-free. Optional `@nexaline-ui/icons-lucide` accepts consumer-selected local structural data, uses `currentColor`, safe element/attribute handling, decorative defaults, and informative labels without bundling a catalogue. |
 | 18. Distribution | Complete | Unminified/minified/modular/no-reset CSS, ESM/CJS/IIFE JavaScript, declarations, maps, licenses, exports, CSS side effects, five local tarballs, isolated consumer tests, no-build tests, and SHA-256 release manifest. |
 | 19. Framework examples | Complete | HTML, PHP, CodeIgniter 4.7, and Laravel 12 examples cover assets, conventional templates, forms, errors, CSRF placement, initialization guidance, and dynamic fragments. Bootable framework fixtures verify real submissions without databases/authentication. |
-| 20. Documentation | Partial | Static docs cover every requested topic and use framework source/distribution behavior. The live catalogue, copyable reference, and audited 38-entry contract inventory are grouped pages rather than one dedicated route containing a live example and full prose for every component. |
+| 20. Documentation | Partial | Static docs cover every requested topic and use framework source/distribution behavior. The live catalogue, copyable reference, compact inventory, and searchable 38-entry detail page provide stable component deep links; they do not yet give every component a separate live example with long-form prose. |
 | 21. Quality and performance | Complete | Generation drift, representative CSS, escaping, lifecycle/events/focus/re-init/cleanup, responsive/theme/RTL, consumer imports, current-engine browser tests, focused visual baselines, and raw/gzip/Brotli measurements are in the release gate. |
 | 22. Release policy | Pending external | SemVer beta, experimental API notice, changelog/migration policy, local archives, integrity manifest, and local release report exist. Package scope ownership, publishing, releases, and deployment require explicit user authorization and have not occurred. |
 | 23. Implementation phases | Complete | Foundation through local beta phases are implemented and the complete release gate passes. Work remained runnable and failures were fixed before expansion. |
@@ -43,7 +43,7 @@ All twelve final acceptance criteria are satisfied locally: forbidden runtime de
 
 1. Retest the documented blocked environments when JAWS, macOS VoiceOver, and a physical iOS VoiceOver device become available.
 2. Smoke-test the declared oldest supported browser versions or transparently raise the support floor before stable release.
-3. Decide whether dedicated component routes add enough value beyond the catalogue, copyable reference, and contract inventory.
+3. Use beta feedback to identify which components need long-form dedicated examples beyond the searchable detail catalogue.
 4. Optionally migrate build tooling from `.mjs` to TypeScript and decide whether component-rule generation is worth the added abstraction.
 5. Establish npm scope ownership and authorize package/docs publication only when ready.
 
