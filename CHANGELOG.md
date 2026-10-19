@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Added searchable component-detail documentation with stable deep links for all 38 audited contracts.
+- Added searchable component-detail documentation with stable deep links and shareable filter URLs for all 38 audited contracts.
 
 ## 0.1.0-beta.1 — 2026-10-19
 

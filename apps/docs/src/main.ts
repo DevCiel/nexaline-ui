@@ -14,7 +14,10 @@ const detailSearch = document.querySelector<HTMLInputElement>('#component-detail
 const detailGroup = document.querySelector<HTMLSelectElement>('#component-detail-group');
 const detailStatus = document.querySelector<HTMLElement>('#component-detail-status');
 if (detailRoot) {
-  const updateDetails = () => {
+  const initialParams = new URLSearchParams(location.search);
+  if (detailSearch) detailSearch.value = initialParams.get('q') ?? '';
+  if (detailGroup && [...detailGroup.options].some((option) => option.value === initialParams.get('group'))) detailGroup.value = initialParams.get('group') ?? '';
+  const updateDetails = (syncUrl = true) => {
     const terms = (detailSearch?.value.trim().toLowerCase() ?? '').split(/\s+/).filter(Boolean);
     const group = detailGroup?.value ?? '';
     const matches = componentContracts.filter((item) => {
@@ -23,9 +26,16 @@ if (detailRoot) {
     });
     renderComponentDetails(detailRoot, matches);
     if (detailStatus) detailStatus.textContent = `${matches.length} of ${componentContracts.length} components shown.`;
+    if (syncUrl) {
+      const params = new URLSearchParams();
+      if (detailSearch?.value.trim()) params.set('q', detailSearch.value.trim());
+      if (detailGroup?.value) params.set('group', detailGroup.value);
+      const query = params.size ? `?${params}` : '';
+      history.replaceState(null, '', `${location.pathname}${query}${location.hash}`);
+    }
   };
-  detailSearch?.addEventListener('input', updateDetails);
-  detailGroup?.addEventListener('change', updateDetails);
+  detailSearch?.addEventListener('input', () => updateDetails());
+  detailGroup?.addEventListener('change', () => updateDetails());
   window.addEventListener('hashchange', () => {
     if (!location.hash) return;
     if (detailSearch) detailSearch.value = '';
@@ -33,7 +43,7 @@ if (detailRoot) {
     updateDetails();
     requestAnimationFrame(() => document.querySelector<HTMLElement>(location.hash)?.scrollIntoView());
   });
-  updateDetails();
+  updateDetails(false);
 }
 document.querySelectorAll<HTMLElement>('.docs-code').forEach(block => block.setAttribute('tabindex','0'));
 document.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach(button=>button.addEventListener('click',async()=>{const target=document.querySelector<HTMLElement>(button.dataset.copyTarget??'');if(!target)return;try{await navigator.clipboard.writeText(target.textContent??'');button.textContent='Copied';window.setTimeout(()=>button.textContent='Copy',1600)}catch{button.textContent='Select and copy';target.focus()}}));
